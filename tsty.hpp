@@ -86,7 +86,7 @@ void emphasis_on(unsigned int flags);
 !*/
 void emphasis_on(Emphasis n...);
 
-//! Turns off any emphasis that may have been set previously using 
+//! Turns off any emphasis that may have been set previously
 void emphasis_off();
 
 /*!
@@ -102,7 +102,7 @@ void emphasis_off();
  *  @param flags    A bit flag specifying the emphasis
  *
  *  @return A string representing an ANSI escape sequence that may be pinted in
- *          the future to set the emphasis.
+ *          the future to set the text emphasis.
 !*/
 std::string ansi_emphasis(unsigned int flags);
 
@@ -118,10 +118,45 @@ std::string ansi_emphasis(unsigned int flags);
  *  
  *  @param n    A variadic list specifying the emphasis
  *
- *  @return A string representing an ANSI escape sequence that may be pinted in
- *          the future to set the emphasis.
+ *  @return A string representing an ANSI escape sequence that may be printed
+ *          in the future to set the text emphasis.
 !*/
 std::string ansi_emphasis(Emphasis n...);
+
+/*!
+ *  Sets the background and foreground colors of all subsequent outputted text
+ *  to correspond to the values specified by fg and bg, respectively.
+ * 
+ *  Example usage:
+ *  @code
+ *      color_on(rgb(127, 127, 255), rgb(255, 127, 127);
+ *  @endcode
+ *
+ *  @param fg   A rgb color value specifying the desired foreground color
+ *  @param bg   A rgb color value specifying the desired background color
+!*/
+void color_on(rgb fg, rgb bg);
+
+//! Turns off any color that may have been set previously
+void color_off();
+
+/*!
+ *  Returns a string representing an ANSI escape sequence that may be printed
+ *  in the future to set the text color.
+ *  
+ *  Example usage:
+ *  @code
+ *      std::string str = ansi_color(rgb(0, 0, 0), rgb(255, 255, 255));
+ *      std::cout << str << "Black text on a white background!" << std::endl;
+ *  @endcode
+ *
+ *  @param fg   A rgb color value specifying the desired foreground color
+ *  @param bg   A rgb color value specifying the desired background color
+ *
+ *  @return A string representing an ANSI escape sequence that may be printed
+ *          in the future to set the text color.
+!*/
+ansi_color(rgb fg, rgb bg);
 
 }
 
