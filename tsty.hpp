@@ -10,6 +10,7 @@
 #define TSTY_HPP__
 
 #include <type_traits>
+#include <string>
 
 namespace tsty {
 
@@ -57,6 +58,30 @@ enum Emphasis {
     NO_FRAME        = 0x200000,
     NO_OVERLINE     = 0x400000
 };
+
+/*!
+ *  Sets the current emphasis of all subsequent outputted text to correspond to
+ *  the emphasis specified by flags.
+ *
+ *  Example usage:
+ *  @code
+ *      emphasis(ITALIC | NEGATIVE | FRAME);
+ *  @endcode
+ *
+ *  @param flags    A bit flag specifying the emphasis
+!*/
+void emphasis(unsigned int flags);
+
+/*!
+ *  Sets the current emphasis of all subsequent outputted text to correspond to
+ *  the emphasis specified by a variadic list of elements n.
+ *
+ *  Example usage:
+ *  @code
+ *      emphasis(ITALIC, NEGATIVE, FRAME);
+ *  @endcode
+!*/
+void emphasis(Emphasis n...);
 
 }
 
