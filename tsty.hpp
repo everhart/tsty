@@ -58,6 +58,7 @@ enum Emphasis {
     NO_FRAME        = 0x200000,
     NO_OVERLINE     = 0x400000
 };
+typedef Emphasis emphasis;
 
 /*!
  *  Sets the current emphasis of all subsequent outputted text to correspond to
@@ -85,8 +86,43 @@ void emphasis_on(unsigned int flags);
 !*/
 void emphasis_on(Emphasis n...);
 
-//! Turns off any emphasis that may have been set previously using emphasis_on().
+//! Turns off any emphasis that may have been set previously using 
 void emphasis_off();
+
+/*!
+ *  Returns a string representing an ANSI escape sequence that may be printed
+ *  in the future to set the emphasis.
+ *
+ *  Example usage:
+ *  @code
+ *      std::string str = ansi_emphasis(ITALIC | BOLD);
+ *      std::cout << str << "Styled text!" << std::endl;
+ *  @endcode
+ *
+ *  @param flags    A bit flag specifying the emphasis
+ *
+ *  @return A string representing an ANSI escape sequence that may be pinted in
+ *          the future to set the emphasis.
+!*/
+std::string ansi_emphasis(unsigned int flags);
+
+/*!
+ *  Returns a string representing an ANSI escape sequence that may be printed
+ *  in the future to set the emphasis.
+ *
+ *  Example usage:
+ *  @code
+ *      std::string str = ansi_emphasis(ITALIC, BOLD);
+ *      std::cout << str << "Styled text!" << std::endl;
+ *  @endcode
+ *  
+ *  @param n    A variadic list specifying the emphasis
+ *
+ *  @return A string representing an ANSI escape sequence that may be pinted in
+ *          the future to set the emphasis.
+!*/
+std::string ansi_emphasis(Emphasis n...);
+
 }
 
 #endif
