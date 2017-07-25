@@ -70,7 +70,7 @@ enum Emphasis {
  *
  *  @param flags    A bit flag specifying the emphasis
 !*/
-void emphasis(unsigned int flags);
+void emphasis_on(unsigned int flags);
 
 /*!
  *  Sets the current emphasis of all subsequent outputted text to correspond to
@@ -80,9 +80,13 @@ void emphasis(unsigned int flags);
  *  @code
  *      emphasis(ITALIC, NEGATIVE, FRAME);
  *  @endcode
+ *
+ *  @param n    A variadic list specifying the emphasis
 !*/
-void emphasis(Emphasis n...);
+void emphasis_on(Emphasis n...);
 
+//! Turns off any emphasis that may have been set previously using emphasis_on().
+void emphasis_off();
 }
 
 #endif
