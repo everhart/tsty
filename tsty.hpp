@@ -129,7 +129,7 @@ std::string ansi_emphasis(Emphasis n...);
  * 
  *  Example usage:
  *  @code
- *      color_on(rgb(127, 127, 255), rgb(255, 127, 127);
+ *      color_on(rgb(127, 127, 255), rgb(255, 127, 127));
  *  @endcode
  *
  *  @param fg   A rgb color value specifying the desired foreground color
@@ -158,6 +158,59 @@ void color_off();
 !*/
 ansi_color(rgb fg, rgb bg);
 
+/*!
+ *  Sets the foreground color of all subsequent outputted text to correspond to
+ *  the value specified by fg
+ * 
+ *  Example usage:
+ *  @code
+ *      fg_color_on(rgb(127, 127, 255));
+ *  @endcode
+ *
+ *  @param fg   A rgb color value specifying the desired foreground color
+!*/
+void fg_color_on(rgb fg);
+
+/*!
+ *  Returns a string representing an ANSI escape sequence that may be printed
+ *  in the future to set the text foreground color.
+ * 
+ *  Example usage:
+ *  @code
+ *      std::string str = ansi_fg_color(rgb(255, 255, 255));
+ *      std::cout << str << "White text!" << std::endl;
+ *  @endcode
+ *
+ *  @param fg   A rgb color value specifying the desired foreground color
+!*/
+void ansi_fg_color(rgb fg);
+
+/*!
+ *  Sets the background color of all subsequent outputted text to correspond to
+ *  the value specified by bg
+ * 
+ *  Example usage:
+ *  @code
+ *      bg_color_on(rgb(127, 127, 255));
+ *  @endcode
+ *
+ *  @param bg   A rgb color value specifying the desired background color
+!*/
+void bg_color_on(rgb bg);
+
+/*!
+ *  Returns a string representing an ANSI escape sequence that may be printed
+ *  in the future to set the text background color.
+ * 
+ *  Example usage:
+ *  @code
+ *      std::string str = ansi_bg_color(rgb(0, 0, 0));
+ *      std::cout << str << "Text on a black background!" << std::endl;
+ *  @endcode
+ *
+ *  @param bg   A rgb color value specifying the desired background color
+!*/
+void ansi_bg_color(rgb bg);
 }
 
 #endif
